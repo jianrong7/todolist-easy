@@ -108,6 +108,7 @@ header span {
 }
 .trash:hover {
     background-color: salmon;
+    transition-duration: .2s;
 }
 .trash {
     background-color: transparent;
@@ -117,6 +118,7 @@ header span {
 }
 .checkbox:hover {
     background-color: salmon;
+    transition-duration: .2s;
 }
 .checkbox {
     background-color: transparent;
