@@ -81,9 +81,6 @@ header span {
     padding: 30px;
     color: white;
 }
-.addTask {
-    margin-bottom: 30px;
-}
 .tasks {
     margin: 0 auto;
 }
@@ -92,7 +89,8 @@ header span {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    width: 500px;
+    width: 600px;
+    font-size: 18px;
     border-radius: 2px;
     border-bottom: 2px solid wheat;
 }
@@ -125,4 +123,37 @@ header span {
     border-radius: 50%;
     padding: 5px;
     cursor: pointer;
+}
+
+/* Change Input and add button */
+#addList {
+    display: flex;
+    flex-direction: row;
+}
+.addTask {
+    margin: 0 auto 30px auto;
+    display: flex;
+    flex-direction: row;
+    width: 500px;
+    justify-content: center;
+    align-items: center;
+}
+.input {
+    border: none;
+    padding: 5px;
+    width: 70%;
+    border-radius: 5px;
+    color: white;
+    margin-left: 5px;
+    background-color: black;
+}
+.add {
+    cursor: pointer;
+    border: 2px solid transparent;
+    padding: 5px;
+}
+.add:hover {
+    border: 2px solid salmon;
+    border-radius: 50%;
+    transition-duration: .2s;
 }
