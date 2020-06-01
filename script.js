@@ -1,16 +1,25 @@
 const listContainer = document.querySelector(".lists");
 const listAddBtn = document.querySelector(".addIcon");
+const listAddForm = document.querySelector("[data-new-list-form]")
 const input = document.getElementById("listAdder");
+const closeBtns = document.querySelectorAll(".close");
 
-let lists = [];
+const LOCAL_STORAGE_LIST_KEY = 'task.lists'
+let lists = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || [];
+
+
+listAddBtn.addEventListener("click", addList);
+listAddForm.addEventListener("submit", e => {
+    e.preventDefault();
+    addList();
+})
 
 function addList() {
     const listName = input.value;
     const list = createList(listName)
     lists.push(list)
-    renderList();
+    saveAndRender();
 }
-//<li class="list">Get Started<img src="assets/close.png" class="close"></li>
 function renderList() {
     listContainer.innerHTML = "";
     lists.forEach(list => {
@@ -24,4 +33,10 @@ function renderList() {
 function createList(name) {
     return { id: Date.now().toString(), name: name, tasks: [] }
 }
-listAddBtn.addEventListener("click", addList);
+function saveAndRender() {
+    save();
+    renderList();
+}
+function save() {
+    localStorage.setItem(LOCAL_STORAGE_LIST_KEY, JSON.stringify(lists))
+}
