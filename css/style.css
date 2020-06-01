@@ -1,0 +1,198 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+header {
+    display: flex;
+    font-size: 20px;
+    color: #edeff2;
+    font-weight: bold;
+    background-color: #222222;
+    width: 100vw;
+    height: 55px;
+}
+header span {
+    margin-left: 30px;
+    margin-top: 1rem;
+}
+#logo {
+    height: 20px;
+    width: 20px;
+    margin-top: 1rem;
+    margin-left: 2%;
+    padding: 3px;
+    background-color: salmon;
+    border-radius: 5px;
+}
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 25vw;
+    height: 92vh;
+    color: white;
+    background-color: #333333;
+}
+h2, .lists, #addList {
+    margin-left: 25px;
+    margin-bottom: 10%;
+}
+.sidebar h2 {
+    font-size: 25px;
+    font-weight: bold;
+    border-bottom: 2px solid salmon;
+    border-radius: 2px;
+    padding-bottom: 10px;
+}
+.list {
+    margin-bottom: 5%;
+    padding: 5%;
+    border-right: 3px solid salmon;
+    border-radius: 2px;
+}
+.list:hover {
+    background-color: steelblue;
+    border-right: 3px solid sandybrown;
+    border-radius: 5px;
+    transition-duration: .2s;
+    font-weight: bold;
+    cursor: pointer;
+}
+.list:hover .close {
+    visibility: visible;
+}
+.close {
+    height: 15px;
+    width: 15px;
+    margin-top: 2px;
+    float: right;
+    visibility: hidden;
+}
+.close:hover {
+    transition-duration: .1s;
+    transform: scale(1.2)
+}
+#addList {
+    display: flex;
+    flex-direction: row;
+}
+.addIcon {
+    height: 15px;
+    width: 15px;
+    padding: 7px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+.addIcon:hover {
+    border: 2px solid salmon;
+    transition-duration: .2s;
+}
+#listAdder {
+    width: 70%;
+    height: 30px;
+    margin-left: 10px;
+    padding-left: 8px;
+    border: none;
+    background-color: #222222;
+    color: white;
+    font-weight: bold;
+}
+#listAdder:focus {
+    outline: none;
+}
+#listAdder::placeholder {
+    color: white;
+}
+.bodyContent {
+    display: flex;
+}
+.mainBar {
+    flex-grow: 2;
+    background-color: #3b3b3b;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.addTask {
+    display: flex;
+    margin: 20px 0px;
+}
+#taskAdder {
+    width: 300px;
+    height: 35px;
+    margin-left: 10px;
+    padding-left: 10px;
+    border: none;
+    background-color: #222222;
+    color: white;
+    font-weight: bold;
+}
+#taskAdder:focus {
+    outline: none;
+}
+#taskAdder::placeholder {
+    color: white;
+}
+.addTaskIcon {
+    margin-top: 3px;
+    height: 15px;
+    width: 15px;
+    padding: 5px;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.addTaskIcon:hover {
+    border: 2px solid salmon;
+    border-radius: 50%;
+    transition-duration: .2s;
+}
+ul {
+    font-size: 18px;
+    width: 80%;
+}
+li {
+    list-style-type: none;
+    border-width: 50px;
+    border-bottom: 2px solid black;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    border-radius: 3px;
+    display: flex;
+}
+.task {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.checkbox {
+    cursor: pointer;
+    height: 20px;
+    width: 20px;
+    background-color: #d1d1d1;
+    border-radius: 50%;
+    padding: 7px;
+}
+.checkbox:hover {
+    background-color: salmon;
+    transition-duration: .2s;
+}
+.task {
+    margin-left: 10px;
+    flex-grow: 2;
+}
+.trash {
+    width: 20px;
+    height: 20px;
+    align-self: flex-end;
+    margin-left: 20px;
+    border: 2px solid transparent;
+    padding: 7px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+.trash:hover {
+    border: 2px solid black;
+    transition-duration: .2s;
+}
