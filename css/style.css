@@ -66,6 +66,7 @@ header span {
 .sidebar li img {
     float: right;
     visibility: hidden;
+    cursor: pointer;
 }
 .sidebar li:hover img {
     visibility: visible;
@@ -79,4 +80,49 @@ header span {
     flex-direction: column;
     padding: 30px;
     color: white;
+}
+.addTask {
+    margin-bottom: 30px;
+}
+.tasks {
+    margin: 0 auto;
+}
+.tasks li {
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 500px;
+    border-radius: 2px;
+    border-bottom: 2px solid wheat;
+}
+.tasks li:hover {
+    background-color: grey;
+    transition-duration: .2s;
+    border-radius: 3px;
+}
+.todo {
+    flex-grow: 2;
+    align-self: flex-start;
+    text-align: left;
+    margin-left: 20px;
+    margin-top: 5px;
+}
+.trash:hover {
+    background-color: salmon;
+}
+.trash {
+    background-color: transparent;
+    border-radius: 50%;
+    padding: 5px;
+    cursor: pointer;
+}
+.checkbox:hover {
+    background-color: salmon;
+}
+.checkbox {
+    background-color: transparent;
+    border-radius: 50%;
+    padding: 5px;
+    cursor: pointer;
 }
