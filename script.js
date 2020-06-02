@@ -3,6 +3,7 @@ const listAddBtn = document.querySelector(".addIcon");
 const listAddForm = document.querySelector("[data-new-list-form]")
 const input = document.getElementById("listAdder");
 const closeBtn = document.querySelector(".close");
+const listDisplayContainer = document.querySelector(".tasks")
 
 const LOCAL_STORAGE_LIST_KEY = 'task.lists'
 const LOCAL_STORAGE_SELECTED_LIST_ID_KEY = 'task.selectedListId'
@@ -27,8 +28,17 @@ listAddForm.addEventListener("submit", e => {
     e.preventDefault();
     addList();
 })
-renderList();
+render();
+function render() {
+    clearElement(listContainer)
+    renderList()
 
+    if (selectedListId == null) {
+        listDisplayContainer.style.display = 'none'
+    } else {
+        listDisplayContainer.style.display = ""
+    }
+}
 function addList() {
     const listName = input.value;
     const list = createList(listName)
