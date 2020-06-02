@@ -160,5 +160,19 @@ header span {
     transition-duration: .2s;
 }
 .active-list {
-    background-color: green;
+    font-weight: bold;
+    border-left: 2px solid salmon;
+    background-color: grey;
+}
+.close {
+    text-align: center;
+    border: 2px solid wheat;
+    padding: 10px 0px;
+    margin-right: 20px;
+    border-radius: .2s;
+    margin-bottom: 30px;
+}
+.close:hover {
+    border: 2px solid salmon;
+    transition-duration: .2s;
 }
