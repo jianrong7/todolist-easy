@@ -3,7 +3,9 @@ const listAddBtn = document.querySelector(".addIcon");
 const listAddForm = document.querySelector("[data-new-list-form]")
 const input = document.getElementById("listAdder");
 const closeBtn = document.querySelector(".close");
-const listDisplayContainer = document.querySelector(".tasks")
+const listDisplayContainer = document.querySelector(".mainBar")
+const tasksContainer = document.querySelector(".tasks")
+const taskTemplate = document.getElementById("task-template")
 
 const LOCAL_STORAGE_LIST_KEY = 'task.lists'
 const LOCAL_STORAGE_SELECTED_LIST_ID_KEY = 'task.selectedListId'
@@ -33,11 +35,26 @@ function render() {
     clearElement(listContainer)
     renderList()
 
+    const selectedList = lists.find(list => list.id === selectedListId)
     if (selectedListId == null) {
         listDisplayContainer.style.display = 'none'
     } else {
         listDisplayContainer.style.display = ""
+        clearElement(tasksContainer)
+        renderTasks(selectedList)
     }
+}
+function renderTasks(selectedList) {
+    selectedList.tasks.forEach(task => {
+        const taskElement = document.importNode(taskTemplate.content, true)
+        const checkbox = taskElement.querySelector('.checkbox')
+        checkbox.id = task.id
+        checkbox.checked = task.complete
+        const todo = taskElement.querySelector('.todo')
+        todo.htmlFor = task.id
+        todo.append(task.name)
+        tasksContainer.appendChild(taskElement)
+    })
 }
 function addList() {
     const listName = input.value;
@@ -61,7 +78,11 @@ function renderList() {
     input.value = null
 }
 function createList(name) {
-    return { id: Date.now().toString(), name: name, tasks: [] }
+    return { id: Date.now().toString(), name: name, tasks: [{
+        id: '324',
+        name: 'test',
+        complete: false
+    }] }
 }
 function saveAndRender() {
     save();

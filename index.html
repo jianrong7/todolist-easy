@@ -42,7 +42,7 @@
           <input type="text" placeholder="New Task" id="taskAdder" class="input">
         </div>
         <ul class="tasks">
-          <li class="task">
+          <!-- <li class="task">
             <img src="assets/tick.png" class="checkbox">
             <span class="todo">Decide to get stuff done</span>
             <img src="assets/trash.png" class="trash">
@@ -51,9 +51,16 @@
             <img src="assets/tick.png" class="checkbox">
             <span class="todo">Check off items by clicking the checkbox</span>
             <img src="assets/trash.png" class="trash">
-          </li>
+          </li> -->
         </ul>
       </div>
     </div>
+    <template id="task-template">
+      <li class="task">
+        <img src="assets/tick.png" class="checkbox">
+        <span class="todo"></span>
+        <img src="assets/trash.png" class="trash">
+      </li>
+    </template>
   </body>
 </html>
