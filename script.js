@@ -3,9 +3,11 @@ const listAddBtn = document.querySelector(".addIcon");
 const listAddForm = document.querySelector("[data-new-list-form]")
 const input = document.getElementById("listAdder");
 const closeBtn = document.querySelector(".close");
-const listDisplayContainer = document.querySelector(".mainBar")
-const tasksContainer = document.querySelector(".tasks")
-const taskTemplate = document.getElementById("task-template")
+const listDisplayContainer = document.querySelector(".mainBar");
+const tasksContainer = document.querySelector(".tasks");
+const taskTemplate = document.getElementById("task-template");
+const taskAddBtn = document.querySelector(".addTaskIcon")
+const newTaskForm = document.querySelector("#taskAdder");
 
 const LOCAL_STORAGE_LIST_KEY = 'task.lists'
 const LOCAL_STORAGE_SELECTED_LIST_ID_KEY = 'task.selectedListId'
@@ -29,6 +31,25 @@ listAddBtn.addEventListener("click", addList);
 listAddForm.addEventListener("submit", e => {
     e.preventDefault();
     addList();
+})
+taskAddBtn.addEventListener("click", addList);
+newTaskForm.addEventListener("submit", e => {
+    e.preventDefault();
+    const taskName = newTaskForm.value;
+    if (taskName == null || taskName == "") return
+    const task = createTask(taskName)
+    newTaskInput.value = null
+    const selectedList = lists.find(list => list.id === selectedListId)
+    selectedList.tasks.push(task)
+    saveAndRender();
+})
+tasksContainer.addEventListener('click', e => {
+    if (e.target.tagName.toLowerCase() === 'img') {
+        const selectedList = lists.find(list => list.id === selectedListId)
+        const selectedTask = selectedList.tasks.find(task => task.id === e.target.id)
+        selectedTask.complete = e.target.checked
+        save()
+    }
 })
 render();
 function render() {
@@ -78,11 +99,10 @@ function renderList() {
     input.value = null
 }
 function createList(name) {
-    return { id: Date.now().toString(), name: name, tasks: [{
-        id: '324',
-        name: 'test',
-        complete: false
-    }] }
+    return { id: Date.now().toString(), name: name, tasks: [] }
+}
+function createTask(name) {
+    return { id: Date.now().toString(), name: name, complete: false }
 }
 function saveAndRender() {
     save();
