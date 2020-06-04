@@ -9,6 +9,7 @@ const taskTemplate = document.getElementById("task-template");
 const taskAddBtn = document.querySelector(".addTaskIcon")
 const taskForm = document.querySelector("#taskForm")
 const newTaskForm = document.querySelector("#taskAdder");
+const trashBtn = document.querySelector(".trash")
 
 const LOCAL_STORAGE_LIST_KEY = 'task.lists'
 const LOCAL_STORAGE_SELECTED_LIST_ID_KEY = 'task.selectedListId'
@@ -19,13 +20,17 @@ closeBtn.addEventListener('click', e => {
     lists = lists.filter(list => list.id !== selectedListId)
     selectedListId = null
     saveAndRender()
-    console.log('hi')
+})
+trashBtn.addEventListener("click", e => {
+    const selectedList = lists.find(list => list.id === selectedListId)
+    selectedList.tasks = selectedList.tasks.filter(task => task.id !== selectedTaskId)
+    selectedTaskId = null
+    saveAndRender()
 })
 listContainer.addEventListener("click", e => {
     if (e.target.tagName.toLowerCase() === 'li') {
         selectedListId = e.target.dataset.listId
         saveAndRender();
-        console.log("lol")
     }
 })
 listAddBtn.addEventListener("click", addList);
