@@ -7,6 +7,7 @@ const listDisplayContainer = document.querySelector(".mainBar");
 const tasksContainer = document.querySelector(".tasks");
 const taskTemplate = document.getElementById("task-template");
 const taskAddBtn = document.querySelector(".addTaskIcon")
+const taskForm = document.querySelector("#taskForm")
 const newTaskForm = document.querySelector("#taskAdder");
 
 const LOCAL_STORAGE_LIST_KEY = 'task.lists'
@@ -30,15 +31,16 @@ listContainer.addEventListener("click", e => {
 listAddBtn.addEventListener("click", addList);
 listAddForm.addEventListener("submit", e => {
     e.preventDefault();
+    const listName = input.value
+    if (listName == null || listName == "") return
     addList();
 })
-taskAddBtn.addEventListener("click", addList);
-newTaskForm.addEventListener("submit", e => {
+taskForm.addEventListener("submit", e => {
     e.preventDefault();
     const taskName = newTaskForm.value;
     if (taskName == null || taskName == "") return
     const task = createTask(taskName)
-    newTaskInput.value = null
+    newTaskForm.value = null
     const selectedList = lists.find(list => list.id === selectedListId)
     selectedList.tasks.push(task)
     saveAndRender();
@@ -49,6 +51,7 @@ tasksContainer.addEventListener('click', e => {
         const selectedTask = selectedList.tasks.find(task => task.id === e.target.id)
         selectedTask.complete = e.target.checked
         save()
+        render();
     }
 })
 render();
@@ -106,7 +109,7 @@ function createTask(name) {
 }
 function saveAndRender() {
     save();
-    renderList();
+    render();
 }
 function save() {
     localStorage.setItem(LOCAL_STORAGE_LIST_KEY, JSON.stringify(lists))
